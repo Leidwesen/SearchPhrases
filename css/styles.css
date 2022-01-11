@@ -1,0 +1,25 @@
+body {
+    font-family: "Courier New", Courier;
+    background-color: rgb(196,196,196);
+}
+
+button {
+    font-family: "Courier New", Courier;
+}
+
+.hide {
+    display: none;
+}
+
+td {
+  border-top: 1px solid black;
+}
+
+td {
+    vertical-align: top;
+}
+
+.phraseRow {
+    background-color: rgb(50,50,50);
+    color: white
+}
