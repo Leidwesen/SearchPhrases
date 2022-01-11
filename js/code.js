@@ -11,7 +11,7 @@ const phraseData = [
     ["year{N}", "Pokemon caught in year {N}", "Range. Accepts both 20XX and XX.", "'year16', 'year20-21', 'year17-1'"],
     ["{N}*","Pokemon in appraisal range {N}", "{N} is either 0/1/2/3/4, based on sum of IVs. 0 = 0-22, 1 = 23-29, 2 = 30-36, 3 = 37-44, 4 = 45", "'4*', '0*'"],
     ["defender","Pokemon currently defending a gym"],
-    ["{name}", "Autocomplete. Pokemon with either name or nickname {name}", "Prepending '+' matches all pokemon in the same evolutionary family as matched {name}s", "'vulpix', '+bidoof', '+Mr. Rime'"],
+    ["{name}", "Pokemon with either name or nickname {name}", "Autocomplete. Prepending '+' matches all pokemon in the same evolutionary family as matched {name}s", "'vulpix', '+bidoof', '+Mr. Rime'"],
     ["{type}", "Pokemon with type {type}",,"water"],
     ["{region}", "Pokemon from the {region} region", "Options: Kanto, Johto, Hoenn, Sinnoh, Unova, Galar, Alola, Kalos. Galar and Alola also return regional formes. <a href='https://redd.it/ooc47n'>BUG:</a> Regional formes excluded by !Galar and !Alola cannot be unexcluded.", "'alola'"],
     ["eggsonly", "<a href='https://bulbapedia.bulbagarden.net/wiki/Baby_Pokémon'>Baby</a> pokemon", "Typically only found in eggs"],
@@ -45,8 +45,9 @@ const phraseData = [
     ["@{1/2/3}{criteria}", "Moves in correct slot matching given criteria","1=quick, 2=first charge, 3=second charge. Criteria can be any of: {type}, {move}, special, weather. BUG: '!@3{}' does not update result count for large searches.","'@1water', '@3meteor mash', '@2weather'"],
     ["!@move_name", "Pokemon with a 3rd move unlocked", "Autocomplete. The 3rd move when not unlocked has this name. Use at least 'mov' to avoid losing meteor mash & moonblast", "'!@move_name', '!@3mov'"],
     ["tags",,,,true],
-    ["{tag}", "Pokemon tagged with {tag} tag", "Don't name a tag after an already used search phrase please"],
-    ["#{tag}", "Pokemon tagged with tag {tag}", "Autocomplete."],
+    ["{tag}", "Pokemon tagged with {tag} tag", "Don't name a tag after an already used search phrase please. BUG: Tag searches cannot be negated with !"],
+    ["#{tag}", "Pokemon tagged with tag {tag}", "Autocomplete. `#` matches all tagged pokemon."],
+    ["","workaround for tag negation","• Create tag TEMP<br>• Tag all pokemon with TEMP. You cannot select-all on an unfiltered storage, so use two phrases that cover everything such as 'age0' and 'age1-'<br>• Search 'TAG&TEMP', select-all, remove TEMP.<br>• TEMP is now a negation of TAG.<br>• To match all untagged, use '#' instead of 'TAG'"],
     ["logical operations",,,,true],
     ["& or |","AND combination", "All pokemon matching BOTH properties", "'spheal&shiny', '+vulpix&alola'"],
     [", or ; or :", "OR combination","All pokemon matching EITHER property", "'4*,shiny', "],
@@ -54,23 +55,52 @@ const phraseData = [
     ["",,"& and , can be chained together multiple times. Ambiguity is resolved by always considering ,s nested inside &s", "'0*,1*,2*', 'meowth,alola&vulpix,galar'"],
 ]
 
+const friendsData = [
+    ["{name}", "Friends with name or nickname {name}", "Autocomplete."],
+    ["interactable", "Friends who have not been interacted with today", "Interaction times are based on interactee's local time."],
+    ["giftable", "Friends who you have not sent a gift to today", "Gift opened times are based on opener's local time."],
+    ["lucky", "Lucky friends"],
+    ["friendlevel{N}", "Friends with friendship level {N}", "Range. 0 = no interaction, 1/2/3/4 = good/great/ultra/best", "'friendlevel4', 'friendlevel2-3'"],
+    ["logical operations",,,,true],
+    ["",,"Same as  storage search"],
+];
+
+const pages = {
+    'phraseBTN' : 'phrasePage',
+    'linkBTN' : 'linkPage',
+    'friendBTN' : 'friendsPage',
+};
+
+function updateTable(id, data) {
+    let curTable = $S(`#${id}`).innerHTML;
+    for (let row of data) {
+	let doID = row[4] || false;
+	let addtd = `<td${doID?' class=phraseRow':''}>`
+	curTable += `<tr>${addtd}${row[0]||""}</td>` +
+	    `${addtd}${row[1]||""}</td>` +
+	     `${addtd}${row[2]||""}</td>` +
+	    `${addtd}${row[3]||""}</td></tr>`;
+    }
+    $S(`#${id}`).innerHTML = curTable;
+}
+
 window.addEventListener('load', function() {
-    $S('#phraseBTN').addEventListener('click', (e)=>{
+    /*$S('#phraseBTN').addEventListener('click', (e)=>{
 	$S('#phrasePage').classList.remove('hide');
 	$S('#linkPage').classList.add('hide');
     });
     $S('#linkBTN').addEventListener('click', (e)=>{
 	$S('#linkPage').classList.remove('hide');
 	$S('#phrasePage').classList.add('hide');
-    });
-    let curTable = $S('#phraseTable').innerHTML;
-    for (let phraseRow of phraseData) {
-	let doID = phraseRow[4] || false;
-	let addtd = `<td${doID?' class=phraseRow':''}>`
-	curTable += `<tr>${addtd}${phraseRow[0]||""}</td>` +
-	    `${addtd}${phraseRow[1]||""}</td>` +
-	     `${addtd}${phraseRow[2]||""}</td>` +
-	    `${addtd}${phraseRow[3]||""}</td></tr>`;
+    });*/
+    for (let [key, val] of Object.entries(pages)) {
+	$S(`#${key}`).addEventListener('click', (e)=>{
+	    $S(`#${val}`).classList.remove('hide');
+	    for (let altPages of Object.values(pages).filter(e=>e!=val)) {
+		$S(`#${altPages}`).classList.add('hide');
+	    }
+	});
     }
-    $S('#phraseTable').innerHTML = curTable;
+    updateTable('phraseTable', phraseData);
+    updateTable('friendsTable', friendsData);
 });
