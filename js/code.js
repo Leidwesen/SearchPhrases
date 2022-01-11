@@ -84,22 +84,18 @@ function updateTable(id, data) {
     $S(`#${id}`).innerHTML = curTable;
 }
 
-window.addEventListener('load', function() {
-    /*$S('#phraseBTN').addEventListener('click', (e)=>{
-	$S('#phrasePage').classList.remove('hide');
-	$S('#linkPage').classList.add('hide');
+function pageShift(btn, page, altPages) {
+    $S(`#${btn}`).addEventListener('click', (e)=>{
+	$S(`#${page}`).classList.remove('hide');
+	for (let altPage of altPages) {
+	    $S(`#${altPage}`).classList.add('hide');
+	}
     });
-    $S('#linkBTN').addEventListener('click', (e)=>{
-	$S('#linkPage').classList.remove('hide');
-	$S('#phrasePage').classList.add('hide');
-    });*/
+}
+
+window.addEventListener('load', function() {
     for (let [key, val] of Object.entries(pages)) {
-	$S(`#${key}`).addEventListener('click', (e)=>{
-	    $S(`#${val}`).classList.remove('hide');
-	    for (let altPages of Object.values(pages).filter(e=>e!=val)) {
-		$S(`#${altPages}`).classList.add('hide');
-	    }
-	});
+	pageShift(key, val, Object.values(pages).filter(e=>e!=val));
     }
     updateTable('phraseTable', phraseData);
     updateTable('friendsTable', friendsData);
