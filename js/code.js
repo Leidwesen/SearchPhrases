@@ -32,7 +32,7 @@ const phraseData = [
     ["pokemon - encounter type",,,,true],
     ["raid", "Pokemon caught from a raid", "Only extends back to around Oct 8 2020"],
     ["hatched", "Pokemon hatched from an egg", "Only extends back to around July 13-20 2017"],
-    ["research", "Pokemon caught from any research", "Only extends back to around Oct 28 2020"],
+    ["research", "Pokemon caught from any type of research", "Only extends back to around Oct 28 2020"],
     ["gbl", "Pokemon caught from GO Battle League", "Only extends back to around Oct 28 2020"],
     ["rocket", "Pokemon caught from Team GO Rocket", "Only extends back to around Oct 28 2020. Includes all rocket encounter types."],
     ["traded", "Pokemon obtained from a trade", "Will also show up under original encounter type search"],
