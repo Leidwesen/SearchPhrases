@@ -47,7 +47,7 @@ const phraseData = [
     ["pokemon - moves",,,,true],
     ["@{type}","Moves with type {type}","","'@fairy'"],
     ["@{move}","Moves with name {move}", "Autocomplete. Moves with spaces use spaces. {psychic} is superseded by the type, so '@psychi' or more correctly '@psychic&!@psychic fangs' is necessary", "'@crunch', '@hydro pump'"],
-    ["@special", "Moves that can't be learnt with normal TMs","Includes eveent legacy, true legacy, frustration & return."],
+    ["@special", "Moves that can't be learnt with normal TMs","Includes event legacy, true legacy, frustration & return."],
     ["@weather", "Moves with type currently weather boosted", "BUG: In remote raid lobby, will show local weather, not remote"],
     ["@{1/2/3}{criteria}", "Moves in correct slot matching given criteria","1=quick, 2=first charge, 3=second charge. Options: {type}, {move}, special, weather. BUG: '!@3{}' does not update result count for large searches.","'@1water', '@3meteor mash', '@2weather'"],
     ["!@move_name", "Pokemon with a 3rd move unlocked", "Autocomplete. The 3rd move when not unlocked has this name. Use at least 'mov' to avoid losing meteor mash & moonblast", "'!@move_name', '!@3mov'"],
@@ -86,7 +86,7 @@ function updateTable(id, data) {
 	let addtd = `<td${doID?' class=phraseRow':''}>`
 	curTable += `<tr>${addtd}${row[0]||""}</td>` +
 	    `${addtd}${row[1]||""}</td>` +
-	     `${addtd}${row[2]||""}</td>` +
+	    `${addtd}${row[2]||""}</td>` +
 	    `${addtd}${row[3]||""}</td></tr>`;
     }
     $S(`#${id}`).innerHTML = curTable;
