@@ -5,7 +5,7 @@ const phraseData = [
     ["{name}", "Pokemon with either name or nickname {name}", "Autocomplete. Prepending '+' matches all pokemon in the same evolutionary family as matched {name}s", "'vulpix', '+bidoof', '+Mr. Rime'"],
     ["pokemon - ranges",,"all in this category are ranges",,true],
     ["cp{N}", "Pokemon with CP {N}",, "'cp-1500', cp'2500-1501', 'cp3000-'"],
-    ["distance{N}", "Pokemon obtained {N} km away", "Measures against current ingame location. Caught location may be influenced by S2 shenanigans.","'distance101-', 'distance-1000'"],
+    ["distance{N}", "Pokemon obtained {N} km away", "Measures against current ingame location. When used without '-', matches distances less than {N}: 'distance{N}' = 'distance-{N}'. Caught location may be influenced by S2 shenanigans.","'distance101-', 'distance1000'"],
     ["hp{N}", "Pokemon with HP {N}", "Considers maximum HP, ignores any damage taken. Use HP sort for that.", "'hp200-'"],
     ["{N}", "Pokemon with pokedex number {N}", "Uses national dex #.","'-151', '399'"],
     ["age{N}","Pokemon caught {N} days ago", "Age increases precisely 24 hours after catch", "'age0', 'age365-'"],

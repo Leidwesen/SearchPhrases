@@ -12,10 +12,7 @@ button {
 }
 
 td {
-  border-top: 1px solid black;
-}
-
-td {
+    border-top: 1px solid black;
     vertical-align: top;
 }
 
