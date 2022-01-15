@@ -1,9 +1,12 @@
 function $S(selector) { return document.querySelector(selector); }
 
 const phraseData = [
+    ["","","All phrases are case-insensitive",""],
+    ["","","Autocomplete = will match all words starting with provided phrase.",""],
     ["pokemon",,,,true],
-    ["{name}", "Pokemon with either name or nickname {name}", "Autocomplete. Prepending '+' matches all pokemon in the same evolutionary family as matched {name}s", "'vulpix', '+bidoof', '+Mr. Rime'"],
+    ["{name}", "Pokemon with either name or nickname {name}", "Autocomplete. Prepending '+' matches all pokemon in the same evolutionary family as matched {name}s. The 'show evolutionary line' toggle is just '+' in the background, so only works with {name}.", "'vulpix', '+bidoof', '+Mr. Rime'"],
     ["pokemon - ranges",,"all in this category are ranges",,true],
+    ["","","{phrase}{N} find pokemon with phrase value of {N}<br>{phrase}{N}-{M} finds values between {N} and {M}, inclusive<br>{phrase}{N}- matches values ≥ {N}, {phrase}-{N} matches values ≤ {N}"],
     ["cp{N}", "Pokemon with CP {N}",, "'cp-1500', cp'2500-1501', 'cp3000-'"],
     ["distance{N}", "Pokemon obtained {N} km away", "Measures against current ingame location. When used without '-', matches distances less than {N}: 'distance{N}' = 'distance-{N}'. Caught location may be influenced by S2 shenanigans.","'distance101-', 'distance1000'"],
     ["hp{N}", "Pokemon with HP {N}", "Considers maximum HP, ignores any damage taken. Use HP sort for that.", "'hp200-'"],
@@ -14,10 +17,10 @@ const phraseData = [
     ["pokemon - gender",,,,true],
     ["male", "Male pokemon"],
     ["female", "Female pokemon"],
-    ["genderunknoown", "Genderless pokemon"],
+    ["genderunknown", "Genderless pokemon"],
     ["pokemon - keywords",,,,true],
     ["{type}", "Pokemon with type {type}","Options: grass, water, fire, ground, ice, steel, fairy, electric, flying, poison, ghost, dark, normal, bug, rock, fighting, dragon, psychic","water"],
-    ["{region}", "Pokemon from the {region} region", "Options: Kanto, Johto, Hoenn, Sinnoh, Unova, Galar, Alola, Kalos. Galar and Alola also return regional formes. <a href='https://redd.it/ooc47n'>BUG:</a> Regional formes excluded by !Galar and !Alola cannot be unexcluded.", "'alola'"],
+    ["{region}", "Pokemon from the {region} region", "Options: Kanto, Johto, Hoenn, Sinnoh, Unova, Galar, Alola, Kalos. Galar and Alola also return regional forms. <a href='https://redd.it/ooc47n'>BUG:</a> Regional forms excluded by !Galar and !Alola cannot be unexcluded.", "'alola'"],
     ["{N}*","Pokemon in appraisal range {N}", "Options: 0, 1, 2, 3, 4. Based on sum of IVs: 0 = 0-22, 1 = 23-29, 2 = 30-36, 3 = 37-44, 4 = 45", "'4*', '0*'"],
     ["costume", "Pokemon wearing clothing","Caught during certain events. <a href='https://redd.it/rt91ye/'>BUG:</a> Excludes 2022 slowking"],
     ["eggsonly", "<a href='https://bulbapedia.bulbagarden.net/wiki/Baby_Pokémon'>Baby</a> pokemon", "Typically only found in eggs"],
@@ -50,7 +53,7 @@ const phraseData = [
     ["@special", "Moves that can't be learnt with normal TMs","Includes event legacy, true legacy, frustration & return."],
     ["@weather", "Moves with type currently weather boosted", "BUG: In remote raid lobby, will show local weather, not remote"],
     ["@{1/2/3}{criteria}", "Moves in correct slot matching given criteria","1=quick, 2=first charge, 3=second charge. Options: {type}, {move}, special, weather. BUG: '!@3{}' does not update result count for large searches.","'@1water', '@3meteor mash', '@2weather'"],
-    ["!@move_name", "Pokemon with a 3rd move unlocked", "Autocomplete. The 3rd move when not unlocked has this name. Use at least 'mov' to avoid losing meteor mash & moonblast", "'!@move_name', '!@3mov'"],
+    ["!@mov", "Pokemon with a 2nd charged move unlocked", "Autocomplete. A default 'move_name_0000' is used for pokemon with no 2nd charge move. Use at least 'mov' to avoid losing moonblast et al.", "'!@mov', '!@3move_name_0000'"],
     ["pokemon - tags",,,,true],
     ["{tag}", "Pokemon tagged with {tag} tag", "Don't name a tag after an already used search phrase please. BUG: Tag searches cannot be negated with !"],
     ["#{tag}", "Pokemon tagged with tag {tag}", "Autocomplete. `#` matches all tagged pokemon."],
@@ -59,11 +62,12 @@ const phraseData = [
     ["& or |","AND combination", "All pokemon matching BOTH properties", "'spheal&shiny', '+vulpix&alola'"],
     [", or ; or :", "OR combination","All pokemon matching EITHER property", "'4*,shiny', "],
     ["!", "NOT operator", "All pokemon that do NOT have property. Must directly prepended phrase to be negated with no spaces.", "'!shiny', '!bulbasaur'"],
+    ["",,"The clickable search phrases are all &-combined together", ""],
     ["",,"& and , can be chained together multiple times. Ambiguity is resolved by always considering ,s nested inside &s", "'0*,1*,2*', 'meowth,alola&vulpix,galar'"],
 ]
 
 const friendsData = [
-    ["friends",,,,true],
+    ["friendslist phrases",,,,true],
     ["{name}", "Friends with name or nickname {name}", "Autocomplete."],
     ["interactable", "Friends who have not been interacted with today", "Interaction times are based on interactee's local time."],
     ["giftable", "Friends who you have not sent a gift to today", "Gift opened times are based on opener's local time."],
