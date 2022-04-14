@@ -61,7 +61,7 @@ const phraseData = [
     ["logical operations",,,,true],
     ["& or |","AND combination", "All pokemon matching BOTH properties", "'spheal&shiny', '+vulpix&alola'"],
     [", or ; or :", "OR combination","All pokemon matching EITHER property", "'4*,shiny', "],
-    ["!", "NOT operator", "All pokemon that do NOT have property. Must directly prepended phrase to be negated with no spaces.", "'!shiny', '!bulbasaur'"],
+    ["!", "NOT operator", "All pokemon that do NOT have property. Must directly prepend phrase to be negated (no spaces)", "'!shiny', '!bulbasaur'"],
     ["",,"The clickable search phrases are all &-combined together", ""],
     ["",,"& and , can be chained together multiple times. Ambiguity is resolved by always considering ,s nested inside &s", "'0*,1*,2*', 'meowth,alola&vulpix,galar'"],
 ]
