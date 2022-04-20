@@ -39,7 +39,7 @@ const phraseData = [
     ["lucky", "Lucky pokemon"],
     ["defender","Pokemon currently defending a gym"],
     ["candyxl", "Pokemon powered beyond level 40", "BUG? Includes best buddies boosted past 40."],
-    ["pokemon - encounter type",,"various ways a pokemon was obtained",,true],
+    ["pokemon - encounter type",,"various ways to obtain pokemon",,true],
     ["raid", "Pokemon caught from a raid", "Only extends back to around Oct 8 2020.<br>Includes all raid types."],
     ["{raid_type}", "Pokemon caught from a type of raid", "Options: remoteraid, megaraid, exraid.<br>Only extends back to around Oct 8 2020"],
     ["hatched", "Pokemon hatched from an egg", "Only extends back to around July 13-20 2017"],
