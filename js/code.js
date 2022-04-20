@@ -64,17 +64,17 @@ const phraseData = [
     ["!@mov", "Pokemon with a 2nd charged move unlocked", "Autocomplete. A default 'move_name_0000' is used for pokemon with no 2nd charge move.<br>Use at least 'mov' to avoid losing moonblast et al.", "'!@mov', '!@3move_name_0000'"],
     ["","","<a href='https://www.reddit.com/r/TheSilphRoad/comments/u3hhqt/useful_search_strings_in_different_languages/i51n7mo/'>BUG</a>: Improperly phrased @searches can return tags, ranged results, or appraisals."],
     ["pokemon - tags",,"phrases related to tags",,true],
-    ["{tag}", "Pokemon tagged with {tag} tag", "Don't name a tag after an already used search phrase please."],
-    ["#{tag}", "Pokemon <a href='https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/2800-tagging-your-pokemon-inventory/?p=all&s=finding-evolving-hatching&f=tagging-your-pokemon-inventory'>tagged</a> with tag {tag}", "Autocomplete."],
+    ["{tag}", "Pokemon <a href='https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/2800-tagging-your-pokemon-inventory/?p=all&s=finding-evolving-hatching&f=tagging-your-pokemon-inventory'>tagged</a> with {tag} tag", "Don't name a tag after an already used search phrase please."],
+    ["#{tag}", "Pokemon tagged  with tag {tag}", "Autocomplete."],
     ["#", "All tagged pokemon", "use '!#' for all untagged pokemon", "'#', '!#'"],
-    ["logical operations",,"advanced tools for searching",,true],
+    ["logical operations",,"advanced tools for combining searches",,true],
     ["& or |","AND combination", "All pokemon matching BOTH properties", "'spheal&shiny', '+vulpix&alola'"],
     [", or ; or :", "OR combination","All pokemon matching EITHER property", "'4*,shiny', "],
     ["!", "NOT operator", "All pokemon that do NOT have property.<br>Must directly prepend phrase to be negated (no spaces)", "'!shiny', '!bulbasaur'"],
     ["",,"The clickable search phrases are all &-combined together", ""],
     ["",,"& and , can be chained together multiple times.<br>Ambiguity is resolved by always considering ,s nested inside &s", "'0*,1*,2*', 'meowth,alola&vulpix,galar'"],
     ["miscellany",,"additional information",,true],
-    ["","","Incubated eggs will count as +1 towards total pokemon count, but will always be ignored in filtered searches"],
+    ["","","Each incubated egg will count as +1 towards total pokemon count, but will always be ignored in filtered searches"],
 ]
 
 const friendData = [
