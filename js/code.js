@@ -9,14 +9,14 @@ const phraseData = [
     ["","","All phrases are case-insensitive",""],
     ["","","Autocomplete = matches all options which start with given phrase.",""],
     ["pokemon - name",,"all in this category autocomplete",,true],
-    ["{name}", "Pokemon with either name or nickname {name}", "", "'vulpix', 'vulp'"],
+    ["{name}", "Pokemon with either name or nickname {name}", "All other phrases take priority over (name}", "'vulpix', 'vulp'"],
     ["+{name}", "All pokemon in the same evolutionary family as {name}", "Does nothing if put before any other search phrase.<br><a href='https://i.imgur.com/2nDmqnk.png'>BUG</a>: Returns no results if put before '@' or '#'", "'+vulpix', '+bidoo'"],
     ["", "\"Show Evolutionary Line\" button", "Essentially the same as putting '+' before every {name}.<br>Does not cause issues with '#'<br>BUG: See @{move}. Does work with the other @{criteria}."],
     ["", "Mid-name Search", "Pokemon whose default names include non-alphanumeric characters can be searched for with the text after those characters.<br>[English] This affects all megas, as well as <a href='https://pastebin.com/raw/y0vQCv8J'>this</a> list.<br><a href='https://i.imgur.com/EKf3oJv.png'>BUG</a>: Returns no results if + is added or Show Line enabled.<br>'BUG': Does not work with nicknames.", "'beedrill', 'koko', 'Oh'"],
     ["pokemon - ranges",,"all in this category are ranges",,true],
     ["","","{phrase}{N} find pokemon with phrase value of {N}<br>{phrase}{N}-{M} finds values between {N} and {M}, inclusive<br>{phrase}{N}- matches values ≥ {N}<br>{phrase}-{N} matches values ≤ {N}"],
     ["cp{N}", "Pokemon with CP {N}",, "'cp-1500', 'cp2500-1501', 'cp3000-'"],
-    ["distance{N}", "Pokemon obtained {N} km away", "Measures against current ingame location.<br>When used without '-', matches distances less than {N}: 'distance{N}' = 'distance-{N}'.<br>Caught location may be influenced by S2 shenanigans.","'distance101-', 'distance1000'"],
+    ["distance{N}", "Pokemon obtained {N} km away", "Measures against current ingame location.<br>When used without '-', matches distances less than {N}: 'distance{N}' = 'distance-{N}'.<br>Caught location is influenced by <a href='https://pokemongohub.net/post/featured/comprehensive-guide-s2-cells-pokemon-go/'>S2 shenanigans</a>.","'distance101-', 'distance1000'"],
     ["hp{N}", "Pokemon with HP {N}", "Considers maximum HP, ignores any damage taken. Use HP sort for that.", "'hp200-'"],
     ["{N}", "Pokemon with pokedex number {N}", "Uses national dex #.","'-151', '399'"],
     ["age{N}","Pokemon caught {N} days ago", "Age increases precisely 24 hours after catch.<br>For hatches, searches based on hatched date.<br>For trades, searches based on original caught date.", "'age0', 'age365-'"],
@@ -53,8 +53,8 @@ const phraseData = [
     ["evolve", "you can currently evolve", "Checks candy & item requirements.<br>Checks <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quests</a> for walking, ignores other quests.<br><a href='https://imgur.com/quVvUdf.png'>BUG</a>: Includes 2019 halloween kanto starters."],
     ["evolvenew", "you've never had the evolution of", "Only considers unregistered evolutions in the main & mega pokedex.<br><a href=https://redd.it/imkedw/>BUG</a>: Includes already mega-evolved pokemon species and current mega.<br><a href='https://imgur.com/TJ2R5VD.png'>BUG</a>: Includes 2019 halloween kanto starters."],
     ["megaevolve", "can currently mega evolve", "Considers energy for each pokemon.<br> Does not include currently active mega evolution."],
-    ["item", "need an <a href='https://pokemongo.fandom.com/wiki/Evolution_Items#Usage'>item</a> to evolve"],
-    ["tradeevolve","have a trade evolution","<a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Trade_evolution'>Means</a> if species is recieved in trade, final evolution is free"],
+    ["item", "need an <a href='https://pokemongo.fandom.com/wiki/Evolution_Items#Usage'>item</a> to evolve","Bug? Only returns pokemon which can 'evolve'"],
+    ["tradeevolve","have a trade evolution","<a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Trade_evolution'>Means</a> if species is recieved in trade, final evolution is free<br><a href='https://i.imgur.com/i0iJkvW.png'>BUG</a>: Does not return traded pokemon."],
     ["pokemon - moves",,"phrases related to moves, using @",,true],
     ["@{type}","Moves with type {type}","Takes priority over {move}","'@fairy'"],
     ["@{move}","Moves with name {move}", "Autocomplete. Moves with spaces use spaces.<br> To find the move \"psychic\", use '@psychi'<br>(more correctly '@psychi&!@psychic fangs')<br><a href='https://i.imgur.com/Wc88S9L.png'>BUG</a>: With 'Show Evolutionary Line' enabled, @{move} is overridden to +{move}, which searches for pokemon name.", "'@crunch', '@hydro pump'"],
@@ -64,17 +64,20 @@ const phraseData = [
     ["!@mov", "Pokemon with a 2nd charged move unlocked", "Autocomplete. A default 'move_name_0000' is used for pokemon with no 2nd charge move.<br>Use at least 'mov' to avoid losing moonblast et al.", "'!@mov', '!@3move_name_0000'"],
     ["","","<a href='https://www.reddit.com/r/TheSilphRoad/comments/u3hhqt/useful_search_strings_in_different_languages/i51n7mo/'>BUG</a>: Improperly phrased @searches can return tags, ranged results, or appraisals."],
     ["pokemon - tags",,"phrases related to tags",,true],
-    ["{tag}", "Pokemon <a href='https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/2800-tagging-your-pokemon-inventory/?p=all&s=finding-evolving-hatching&f=tagging-your-pokemon-inventory'>tagged</a> with {tag} tag", "Don't name a tag after an already used search phrase please."],
-    ["#{tag}", "Pokemon tagged  with tag {tag}", "Autocomplete."],
+    ["{tag}", "Pokemon <a href='https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/2800-tagging-your-pokemon-inventory/?p=all&s=finding-evolving-hatching&f=tagging-your-pokemon-inventory'>tagged</a> with {tag} tag", "BUG: Tags named the same as an existing search phrase will break that phrase. Don't do this please."],
+    ["#{tag}", "Pokemon tagged with tag {tag}", "Autocomplete."],
     ["#", "All tagged pokemon", "use '!#' for all untagged pokemon", "'#', '!#'"],
     ["logical operations",,"advanced tools for combining searches",,true],
     ["& or |","AND combination", "All pokemon matching BOTH properties", "'spheal&shiny', '+vulpix&alola'"],
     [", or ; or :", "OR combination","All pokemon matching EITHER property", "'4*,shiny', "],
     ["!", "NOT operator", "All pokemon that do NOT have property.<br>Must directly prepend phrase to be negated (no spaces)", "'!shiny', '!bulbasaur'"],
-    ["",,"The clickable search phrases are all &-combined together", ""],
     ["",,"& and , can be chained together multiple times.<br>Ambiguity is resolved by always considering ,s nested inside &s", "'0*,1*,2*', 'meowth,alola&vulpix,galar'"],
     ["miscellany",,"additional information",,true],
     ["","","Each incubated egg will count as +1 towards total pokemon count, but will always be ignored in filtered searches"],
+    ["",,"The clickable search phrases are all &-combined together", ""],
+    ["",,"You can see your four most recent searches by pressing \"see more\" while searching"],
+    ["",,"You can save a recent search by holding down on it.<br>BUG: Holding creates many saves"],
+    ["",,"You can rename your saved searches by holding down on them.<br>You <i>cannot</i> search by this name.<br>Use your phone's <a href='https://silph.gg/pages/wpPage/how-to-use-pokemon-go-search-strings'>text replacement</a> feature for that."],
 ]
 
 const friendData = [
@@ -92,11 +95,31 @@ const pages = { // buttonId : linkedPageId
     'friendBTN' : 'friendPage',
     'linkBTN' : 'linkPage',
     'creditBTN' : 'creditPage',
+    'aboutBTN' : 'aboutPage',
 };
 
-function buildTable(id, data) {
+function doGet(map, key, dft) {
+    let val = map[key];
+    if (map[key] == null) {
+	console.error(`key ${key} has no value, defaulting to english`);
+	val = dft
+    }
+    return val;
+}
+
+function buildPage() {
+    let lang = $S('#languageModal').value;
+    let strs = doGet(LANGUAGE_MAP, lang, LANGUAGE_MAP["English"]);
+    let lang_tableHeaders = doGet(strs, 'tableHeaders', tableHeaders);
+    let lang_phraseData = doGet(strs, 'phraseData', phraseData);
+    let lang_friendData = doGet(strs, 'friendData', friendData);
+    buildTable('phraseTable', lang_phraseData, lang_tableHeaders );
+    buildTable('friendTable', lang_friendData, lang_tableHeaders );
+}
+
+function buildTable(id, data, headers) {
     let curTable = "<tr>";
-    for (let row of tableHeaders) {
+    for (let row of headers) {
 	curTable += `<th id=phraseHead>${row}</th>`;
     }
     curTable += "</tr>";
@@ -124,6 +147,24 @@ window.addEventListener('load', () => {
     for (let [key, val] of Object.entries(pages)) {
 	pageShift(key, val, Object.values(pages).filter(e=>e!=val));
     }
-    buildTable('phraseTable', phraseData);
-    buildTable('friendTable', friendData);
+    let curLangs = '';
+    for (let lang of Object.keys(LANGUAGE_MAP)) {
+	curLangs += `<option val="${lang}">${lang}</option>`
+    }
+    $S('#languageModal').innerHTML = curLangs;
+    $S('#languageModal').addEventListener('change', ()=>{buildPage();});
+    buildPage();
 });
+
+const LANGUAGE_MAP = {
+    "English" : {
+	"tableHeaders" : tableHeaders,
+	"phraseData" : phraseData,
+	"friendData" : friendData,
+    },
+    /*"Test": {
+	"tableHeaders" : ["A","B","C","D"],
+	"phraseData" : [["T1","T2","T3","T4",true]],
+	"friendData" : [["T1","T2","T3","T4",false]],
+    }*/
+}
