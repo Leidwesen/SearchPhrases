@@ -19,9 +19,10 @@ const phraseData = [
     ["distance{N}", "Pokemon obtained {N} km away", "Measures against current ingame location.<br>When used without '-', matches distances less than {N}: 'distance{N}' = 'distance-{N}'.<br>Caught location is influenced by <a href='https://pokemongohub.net/post/featured/comprehensive-guide-s2-cells-pokemon-go/'>S2 shenanigans</a>.","'distance101-', 'distance1000'"],
     ["hp{N}", "Pokemon with HP {N}", "Considers maximum HP, ignores any damage taken. Use HP sort for that.", "'hp200-'"],
     ["{N}", "Pokemon with pokedex number {N}", "Uses national dex #.","'-151', '399'"],
-    ["age{N}","Pokemon caught {N} days ago", "Age increases precisely 24 hours after catch.<br>For hatches, searches based on hatched date.<br>For trades, searches based on original caught date.", "'age0', 'age365-'"],
-    ["buddy{N}", "Pokemon with buddy friendship at level {N}", "0 = never buddies, 1 = buddies, never leveled up<br>2/3/4/5=good/great/ultra/best buddies","'buddy5', 'buddy1-4'"],
     ["year{N}", "Pokemon caught in year {N}", "Two digit yy is assumed 20yy.", "'year16', 'year20-2021', 'year2017-'"],
+    ["age{N}","Pokemon caught {N} days ago", "Age increases precisely 24 hours after catch.<br>For hatches, searches based on hatched date.<br>For trades, searches based on original caught date.", "'age0', 'age365-'"],
+    ["buddy{N}", "Pokemon with buddy friendship at level {N}", "0 = never buddies, 1 = buddies, never leveled up<br>2/3/4/5=good/great/ultra/best buddies<br>'buddy1-' will find all pokemon you've previously buddied","'buddy5', 'buddy1-4'"],
+    ["mega{N}", "Pokemon with mega level {N}", "0 = never mega evolved, 1/2/3 = Base/High/Max mega level.<br>'mega1-' will find all pokemon you've previously mega evolved.<br>'Bug': 'mega0' returns <i>all</i> pokemon, instead of all pokemon <i>that could mega evolve</i>.","'mega1-', 'mega3'"],
     ["pokemon - categories",,"groups of phrases that split pokemon into categories",,true],
     ["{type}", "Pokemon with type {type}","Options: grass, water, fire, ground, ice, steel, fairy, electric, flying, poison, ghost, dark, normal, bug, rock, fighting, dragon, psychic","'water'"],
     ["{region}", "Pokemon from the {region} region", "Options: Kanto, Johto, Hoenn, Sinnoh, Unova, Galar, Alola, Kalos<br>Galar and Alola also return regional forms.<br><a href='https://redd.it/ooc47n'>BUG</a>: Regional forms excluded by !Galar and !Alola cannot be unexcluded.<br>'Bug': There is no Hisui search.", "'alola'"],
@@ -152,7 +153,7 @@ window.addEventListener('load', () => {
 	curLangs += `<option val="${lang}">${lang}</option>`
     }
     $S('#languageModal').innerHTML = curLangs;
-    $S('#languageModal').addEventListener('change', ()=>{buildPage();});
+    $S('#languageModal').addEventListener('change', buildPage);
     buildPage();
 });
 
