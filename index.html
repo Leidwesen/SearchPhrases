@@ -2,13 +2,15 @@
 <html lang="en">
   <head >
     <meta charset="utf-8">
-    <meta descrption="Pokemon GO Search Phrases List">
+    <meta description="Pokemon GO Search Phrases List">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search Phrases</title>
 
     <link rel="stylesheet" href="css/styles.css" />
     <script type="text/javascript" src="js/code.js"></script>
   </head>
   <body>
+    <!-- BUTTONS -->
     <div id='pageButtons'>
       <button id='phraseBTN'>Phrases</button>
       <button id='friendBTN'>Friendlist Phrases</button>
@@ -23,13 +25,19 @@
 	<select name='language' id='languageModal'></select>
       </span>
     </div>
+    <!-- SEO -->
+    <div id='aboutPage' class=hide>
+      <p>This is a collection of all Pokemon GO search terms / search phrases / search strings, their uses and translations, their bugs, and related links.</p>
+      <p>There's no shortages of lists of these phrases on the internet, but all of them are lacking. Even Niantic's <a href='https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/1486-searching-filtering-your-pokemon-inventory/'>official list</a> and the best alternative I could find (<a href='https://bulbapedia.bulbagarden.net/wiki/Pokémon_Box_(GO)#Search_queries'>Bulbapedia</a>) are missing phrases and functionalities.</p>
+      <p>This site aims to be the definitive list of all things Pokemon GO search related.</p>
+    </div>
     <!-- POKEMON_STORAGE PHRASES -->
-    <div id='phrasePage'>
+    <div id='phrasePage' style="overflow-x:scroll;">
       <table id='phraseTable'>
       </table>
     </div>
     <!-- FRIENDSLIST PHRASES -->
-    <div id='friendPage' class=hide>
+    <div id='friendPage' class=hide style="overflow-x:scroll;">
       <table id='friendTable'>
       </table>
     </div>
@@ -58,12 +66,6 @@
       <p>Maintained by me. To suggest changes, please create an <a href='https://github.com/Leidwesen/SearchPhrases/issues'>issue</a> or contact me on <a href='https://www.reddit.com/user/FatalisticFeline-47'>reddit</a>.</p>
       <p>Translation spreadsheets maintained by me, data from <a href='https://pokeminers.com'>Pokeminers</a>.</p>
       <p>If you would like to help translate this site to other languages and be credited here, please contact me.</p>
-    </div>
-    <!-- SEO -->
-    <div id='aboutPage' class=hide>
-      <p>This is a collection of all Pokemon GO search terms / search phrases / search strings, their uses and translations, their bugs, and related links.</p>
-      <p>There's no shortages of lists of these phrases on the internet, but all of them are lacking. Even Niantic's <a href='https://niantic.helpshift.com/hc/en/6-pokemon-go/faq/1486-searching-filtering-your-pokemon-inventory/'>official list</a> and the best alternative I could find (<a href='https://bulbapedia.bulbagarden.net/wiki/Pokémon_Box_(GO)#Search_queries'>Bulbapedia</a>) are missing phrases and functionalities.</p>
-      <p>This site aims to be the definitive list of all things Pokemon GO search related.</p>
     </div>
   </body>
 </html>

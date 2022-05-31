@@ -57,7 +57,7 @@ const phraseData = [
     ["@{move}","Moves with name {move}", "Autocomplete. Moves with spaces use spaces.<br> To find the move \"psychic\", use '@psychi'<br>(more correctly '@psychi&!@psychic fangs')<br><a href='https://i.imgur.com/Wc88S9L.png'>BUG</a>: With 'Show Evolutionary Line' enabled, @{move} is overridden to +{move}, which searches for pokemon name.", "'@crunch', '@hydro pump'"],
     ["@special", "Moves that can't be learnt with normal TMs","Includes <a href='https://gamepress.gg/pokemongo/elite-tm-movelist'>event</a> legacy, <a href='https://gamepress.gg/pokemongo/legacy-pokemon-move-list'>true</a> legacy, frustration, & return."],
     ["@weather", "Moves with type currently weather boosted", "BUG: In remote raid lobby, will show local weather, not remote"],
-    ["@{1/2/3}{criteria}", "Moves in correct slot matching given criteria","1 = quick, 2 = first charge, 3 = second charge.<br>Options: {type}, {move}, special, weather.","'@1water', '@3meteor mash', '@2weather'"],
+    ["@{1/2/3}{criteria}", "Moves in given slot matching criteria","1 = quick, 2 = first charge, 3 = second charge.<br>Options: {type}, {move}, special, weather.<br>Also has the @{move} bug.","'@1water', '@3meteor mash', '@2weather'"],
     ["!@mov", "Pokemon with a 2nd charged move unlocked", "Autocomplete. A default 'move_name_0000' is used for pokemon with no 2nd charge move.<br>Use at least 'mov' to avoid losing moonblast et al.", "'!@mov', '!@3move_name_0000'"],
     ["","","<a href='https://www.reddit.com/r/TheSilphRoad/comments/u3hhqt/useful_search_strings_in_different_languages/i51n7mo/'>BUG</a>: Improperly phrased @searches can return tags, ranged results, or appraisals."],
     ["pokemon - tags",,"phrases related to tags",,true],
