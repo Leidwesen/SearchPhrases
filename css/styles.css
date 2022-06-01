@@ -22,3 +22,23 @@ td {
     background-color: rgb(50,50,50);
     color: white
 }
+
+
+/* @media (any-pointer: coarse) { */
+#pageButtons * button {
+    font-weight:bold;
+    padding:5px;
+}
+/* } */
+
+#pageButtons {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-flow: row wrap;
+
+}
+
+.• {
+    padding-left: 7px;
+}
