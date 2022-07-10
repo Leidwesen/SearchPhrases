@@ -25,7 +25,7 @@ const phraseData = [
     ["mega{N}", "Pokemon with mega level {N}", "0 = never mega evolved, 1/2/3 = Base/High/Max mega level.<br>'mega1-' finds all previously mega evolved pokemon.<br>'mega0' finds only pokemon capable of mega evolution.<br><a href='https://i.imgur.com/uDWvVJq.png'>Bug</a>: negated 'mega{N}' only returns pokemon capable of mega evolution, instead of all pokemon.","'mega1-', 'mega3'"],
     ["pokemon - categories",,"groups of phrases that split pokemon into categories",,true],
     ["{type}", "Pokemon with type {type}","Options: grass, water, fire, ground, ice, steel, fairy, electric, flying, poison, ghost, dark, normal, bug, rock, fighting, dragon, psychic","'water'"],
-    ["{region}", "Pokemon from the {region} region", "Options: Kanto, Johto, Hoenn, Sinnoh, Unova, Galar, Alola, Kalos<br>Galar and Alola also return regional forms.<br><a href='https://redd.it/ooc47n'>BUG</a>: Regional forms excluded by !Galar and !Alola cannot be unexcluded.<br>\"Bug\": There is no Hisui search.", "'alola'"],
+    ["{region}", "Pokemon from the {region} region", "Options: Kanto, Johto, Hoenn, Sinnoh, Unova, Galar, Alola, Kalos<br>Galar and Alola also return regional forms.<br><a href='https://redd.it/ooc47n'>BUG</a>: Regional forms excluded by !Galar and !Alola cannot be unexcluded. <a href='https://pastebin.com/raw/frAHpCDm'>[Workaround]</a><br>\"Bug\": There is no Hisui search.", "'alola'"],
     ["{gender}", "Pokemon with gender {gender}", "Options: male, female, genderunknown",],
     ["{size}", "Pokemon with size {size}", "Options: xxs, xs, xl, xxl<br>Size is relative per species, based on <a href='https://thesilphroad.com/science/big-magikarp-tiny-rattata'>height</a>.<br>XX sizes were added Oct 2021, <a href='https://www.reddit.com/r/TheSilphRoad/comments/q6cfea/xxl_pokemon/'>very little</a> is known about them."],
     ["{N}*","Pokemon in appraisal range {N}", "Options: 0, 1, 2, 3, 4<br>Based on sum of IVs: 0 = 0-22, 1 = 23-29, 2 = 30-36, 3 = 37-44, 4 = 45", "'4*', '0*'"],
@@ -87,13 +87,13 @@ const friendData = [
     ["logical operations",,"Same as storage search",,true],
 ];
 
-const pages = { // buttonId : linkedPageId
-    'phraseBTN' : 'phrasePage',
-    'friendBTN' : 'friendPage',
-    'linkBTN' : 'linkPage',
-    'creditBTN' : 'creditPage',
-    'aboutBTN' : 'aboutPage',
-};
+const pages = [ // [buttonId, linkedPageId, loadLinkPhrase]
+    ['phraseBTN',  'phrasePage', ],
+    ['friendBTN',  'friendPage', 'friend'],
+    ['linkBTN',    'linkPage',   'link'],
+    ['creditBTN',  'creditPage', 'credit'],
+    ['aboutBTN',   'aboutPage',  'about'],
+];
 
 function doGet(map, key, dft) {
     let val = map[key];
@@ -141,8 +141,12 @@ function pageShift(btn, page, altPages) {
 }
 
 window.addEventListener('load', () => {
-    for (let [key, val] of Object.entries(pages)) {
-	pageShift(key, val, Object.values(pages).filter(e=>e!=val));
+    let loadLink = document.URL.split('#')[1];
+    for (let [btn, page, linker] of pages) {
+	pageShift(btn, page, pages.map(e=>e[1]).filter(e=>e!=page));
+	if (linker && loadLink && loadLink.toLowerCase().includes(linker)) {
+	    $S(`#${btn}`).click();
+	}
     }
     let curLangs = '';
     for (let lang of Object.keys(LANGUAGE_MAP)) {
