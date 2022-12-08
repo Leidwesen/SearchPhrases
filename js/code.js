@@ -88,9 +88,23 @@ const friendData = [
     ["logical operations",,"Same as storage search",,true],
 ];
 
+const dexData = [
+    ["pokedex - phrases",,"phrases for searching in the pokedex",,true],
+    ["{name}","Pokemon with name {name}","Can also search starting from anywhere in the species name","'Bidoof', 'pix', 'z'"],
+    ["{N}","Pokemon with pokedex number {N}","does <b>NOT</b> work as a range","'1', '151'"],
+    ["{type}","Pokemon with type {type}","Options: grass, water, fire, ground, ice, steel, fairy, electric, flying, poison, ghost, dark, normal, bug, rock, fighting, dragon, psychic"],
+    ["Quirks",,"What makes dex searching different from the other searches?",,true],
+    [,,"No logical operations. Cannot use AND, OR, or NOT."],
+    [,,"{N} search does not work as a range"],
+    [,,"Searches are whitespace sensitive. ' seel ' will work in storage but not pokedex."],
+    [,,"{name} search will search anywhere in a pokemon name"],
+    [,,"Several strings are missing that would otherwise be useful in a dex search:<br>Notably, 'Ultra Beasts' and {region}"], 
+];
+
 const pages = [ // [buttonId, linkedPageId, loadLinkPhrase]
-    ['phraseBTN',  'phrasePage', ],
+    ['phraseBTN',  'phrasePage', 'phrase'],
     ['friendBTN',  'friendPage', 'friend'],
+    ['dexBTN',     'dexPage',    'dex'],
     ['linkBTN',    'linkPage',   'link'],
     ['creditBTN',  'creditPage', 'credit'],
     ['aboutBTN',   'aboutPage',  'about'],
@@ -111,8 +125,10 @@ function buildPage() {
     let lang_tableHeaders = doGet(strs, 'tableHeaders', tableHeaders);
     let lang_phraseData = doGet(strs, 'phraseData', phraseData);
     let lang_friendData = doGet(strs, 'friendData', friendData);
+    let lang_dexData = doGet(strs, 'dexData', dexData);
     buildTable('phraseTable', lang_phraseData, lang_tableHeaders );
     buildTable('friendTable', lang_friendData, lang_tableHeaders );
+    buildTable('dexTable', lang_dexData, lang_tableHeaders );
 }
 
 function buildTable(id, data, headers) {
@@ -161,8 +177,9 @@ window.addEventListener('load', () => {
 const LANGUAGE_MAP = {
     "English" : {
 	"tableHeaders" : tableHeaders,
-	"phraseData" : phraseData,
-	"friendData" : friendData,
+	"phraseData"   : phraseData,
+	"friendData"   : friendData,
+	"dexData"      : dexData,
     },
     /*"Test": {
 	"tableHeaders" : ["A","B","C","D"],
