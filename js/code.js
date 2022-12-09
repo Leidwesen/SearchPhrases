@@ -94,9 +94,11 @@ const dexData = [
     ["{N}","Pokemon with pokedex number {N}","does <b>NOT</b> work as a range","'1', '151'"],
     ["{type}","Pokemon with type {type}","Options: grass, water, fire, ground, ice, steel, fairy, electric, flying, poison, ghost, dark, normal, bug, rock, fighting, dragon, psychic"],
     ["Quirks",,"What makes dex searching different from the other searches?",,true],
+    [,,"<a href='https://www.reddit.com/r/TheSilphRoad/comments/zgdb2f/trainers_the_pokédex_has_been_updated_to_allow/izgnwfn/'>BUG</a>: The clickable search phrases are not properly cleared when directly exiting the search."],
     [,,"No logical operations. Cannot use AND, OR, or NOT."],
     [,,"{N} search does not work as a range"],
     [,,"Searches are whitespace sensitive. ' seel ' will work in storage but not pokedex."],
+    [,,"Searches only look at the base form of species<br>eg 'dark' cannot find Meowth<br>This also applies to the species in the Mega dex<br>- the search treats them as the non-mega form.<br>(eg 'dark' cannot find Mega Gyarados, and 'X' cannot find Mega Charizard X)"],
     [,,"{name} search will search anywhere in a pokemon name"],
     [,,"Several strings are missing that would otherwise be useful in a dex search:<br>Notably, 'Ultra Beasts' and {region}"], 
 ];
