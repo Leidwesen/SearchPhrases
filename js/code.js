@@ -30,6 +30,8 @@ const phraseData = [
     ["{gender}", "Pokemon with gender {gender}", "Options: male, female, genderunknown",],
     ["{size}", "Pokemon with size {size}", "Options: xxs, xs, xl, xxl<br>Size is relative per species, based on <a href='https://thesilphroad.com/science/big-magikarp-tiny-rattata'>height</a>.<br>XX sizes were added Oct 2021, and were <a href='https://www.reddit.com/r/TheSilphRoad/comments/ynczwx/normal_pokémon_can_now_have_xxl_and_xxs_tags/iv88zoc/'>very rare</a>.<br><a href='https://pokemongolive.com/post/more-xxs-xxl-pokemon-in-pokemon-go?hl=en'>Updated</a> in January 2023, they are now <a href='http://redd.it/106602y'>more common</a>"],
     ["{N}*","Pokemon in appraisal range {N}", "Options: 0, 1, 2, 3, 4<br>Based on sum of IVs: 0=0-22, 1=23-29, 2=30-36, 3=37-44, 4=45", "'4*', '0*'"],
+    ["<{type}","Pokemon weak to {type}ed damage","Will return species whose overall typing takes super effective damage from {type} moves","<Fire"],
+    [">{type}","Pokemon with moves effective against {type}","Will return Pokemon with at least one attack dealing super effective damage to {type}<br><a href='https://i.imgur.com/3Qyr3x8.png'>BUG</a>: Ignores 2nd charge move.",">Fire"],
     ["pokemon - keywords","Pokemon which are...","various qualifiers certain pokemon meet",,true],
     ["costume", "wearing <a href='https://pokemongo.fandom.com/wiki/Event_Pokémon'>clothing</a>","Caught during certain events."],
     ["location<br>cards","having a special catch card","Caught during <a href='https://pokemongolive.com/post/location-card-new-feature'>limited events</a>","'locationcards'"],
