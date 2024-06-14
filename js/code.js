@@ -58,7 +58,7 @@ const phraseData = [
     ["item", "need an <a href='https://pokemongo.fandom.com/wiki/Evolution_Items#Usage'>item</a> to evolve","Bug? Only returns pokemon which can 'evolve'"],
     ["tradeevolve","have a trade evolution","<a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Trade_evolution'>Pokemon</a> which are free to evolve if recieved from a trade.<br><a href='https://i.imgur.com/i0iJkvW.png'>BUG</a>: Does not return traded pokemon."],
     ["evolvequest","have an evolution task","Pokemon which have buddy <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quest</a> evolution requirements."],
-    ["fusion","have a fusion form","Pokemon which are currently able to <a href='https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_fusion#Pok%C3%A9mon_that_can_fuse_via_form_change'>fuse</a> (Necrozma).<br>Will likely include Kyurem and Calyrex in the future."],
+    ["fusion","have a fusion form","Pokemon which are currently able to <a href='https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_fusion#Pok%C3%A9mon_that_can_fuse_via_form_change'>fuse</a> (Necrozma).<br>Includes already fused forms, does not include the secondary fusion species.<br>Will likely include Kyurem and Calyrex in the future."],
     ["pokemon - moves",,"phrases related to moves, using @",,true],
     ["@{type}","Moves with type {type}","Takes priority over {move}","'@fairy'"],
     ["@{move}","Moves with name {move}", "Autocomplete. Moves with spaces use spaces.<br> To find the move \"psychic\", use '@psychi'<br>(more correctly '@psychi&!@psychic fangs')<br><a href='https://i.imgur.com/Wc88S9L.png'>BUG</a>: With 'Show Evolutionary Line' enabled, @{move} is overridden to +{move}, which searches for pokemon name.", "'@crunch', '@hydro pump'"],
