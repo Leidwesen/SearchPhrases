@@ -34,7 +34,7 @@ const phraseData = [
     [">{type}","Pokemon with moves effective against {type}","Will return Pokemon with at least one attack dealing super effective damage to {type}<br><a href='https://i.imgur.com/3Qyr3x8.png'>BUG</a>: Ignores 2nd charge move.",">Fire"],
     ["pokemon - keywords","Pokemon which are...","various qualifiers certain pokemon meet",,true],
     ["costume", "wearing <a href='https://pokemongo.fandom.com/wiki/Event_Pokémon'>clothing</a>","Caught during certain events."],
-    ["location<br>cards","having a special catch card","Caught during <a href='https://pokemongolive.com/post/location-card-new-feature'>limited events</a>","'locationcards'"],
+    ["location<br>card","having a special catch card","Caught during certain <a href='https://pokemongo.fandom.com/wiki/Location_Cards'>in-person events</a>","'locationbackground'"],
     ["eggsonly", "<a href='https://bulbapedia.bulbagarden.net/wiki/Baby_Pokémon'>Baby</a> species", "Typically only found in eggs"],
     ["{keyword}","{keyword}", "Options: legendary, mythical, 'ultra beasts', shadow, purified, shiny, lucky."],
     ["defender","currently defending a gym"],
