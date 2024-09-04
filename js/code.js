@@ -36,7 +36,7 @@ const phraseData = [
     ["costume", "wearing <a href='https://pokemongo.fandom.com/wiki/Event_Pokémon'>clothing</a>","Caught during certain events."],
     ["{location_card}","having a <a href='https://pokemongo.fandom.com/wiki/Backgrounds'>special catch card</a>","Options:<br>'locationbackground': Caught during certain in-person events</a><br>'specialbackground': Caught during certain global events<br>'background': Both location and special cards"],
     ["eggsonly", "<a href='https://bulbapedia.bulbagarden.net/wiki/Baby_Pokémon'>Baby</a> species", "Typically only found in eggs"],
-    ["{keyword}","{keyword}", "Options: legendary, mythical, 'ultra beasts', shadow, purified, shiny, lucky."],
+    ["{keyword}","{keyword}", "Options: legendary, mythical, ultrabeast, 'ultra beasts', shadow, purified, shiny, lucky, dynamax, gigantamax."],
     ["defender","currently defending a gym"],
     ["favorite","favorited","Marked with a star in storage."],
     ["candyxl", "powered up past level 40", "(Untested in a while) Includes best buddies boosted past 40."],
@@ -67,6 +67,7 @@ const phraseData = [
     ["@{1/2/3}{criteria}", "Moves in given slot matching criteria","1 = quick, 2 = first charge, 3 = second charge.<br>Options: {type}, {move}, special, weather.<br>Also affected by the @{move} bug.","'@1water', '@3meteor mash', '@2weather'"],
     ["!@mov", "Pokemon with a 2nd charge move unlocked", "Autocomplete. A default 'move_name_0000' is used for pokemon with no 2nd charge move.<br>Use at least 'mov' to avoid losing moonblast et al.<br>Also affected by the @{move} bug.", "'!@mov', '!@3move_name_0000'"],
     ["adventureeffect","Pokemon whose moves have an <a href='https://pokemongo.fandom.com/wiki/Adventure_Effects'>Adventure Effect</a>",'"BUG": Is not preceeded by @'],
+    ["max{move}","Dynamax pokemon with {move} unlocked","CURRENTLY UNTESTED<br>Options: maxmove, maxguard, maxspirit"],
     ["pokemon - tags",,"phrases related to tags",,true],
     ["{tag}", "Pokemon <a href='https://niantic.helpshift.com/hc/en/6/faq/2800'>tagged</a> with {tag} tag", "BUG: Tags named the same as an existing search phrase will break that phrase. Don't do this please."],
     ["#{tag}", "Pokemon tagged with tag {tag}", "Autocomplete."],
@@ -114,7 +115,6 @@ const dexData = [
     [,,"Searches only look at the base form of species<br>eg 'dark' cannot find Meowth<br>This also applies to the species in the Mega dex<br>- the search treats them as the non-mega form<br>(eg 'dark' cannot find Mega Gyarados, and 'X' cannot find Mega Charizard X)"],
     [,,"{name} search will search anywhere in a pokemon name"],
     [,,"<a href='https://redd.it/1e5uhuv'>BUG?</a>: Searches do not take priority over each other"],
-    [,,"Several strings are missing that would otherwise be useful in a dex search:<br>Notably, 'Ultra Beasts' and {region}"],
 ];
 
 const pages = [ // [buttonId, linkedPageId, loadLinkPhrase]
