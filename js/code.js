@@ -37,7 +37,7 @@ const phraseData = [
     ["{location_card}","having a <a href='https://pokemongo.fandom.com/wiki/Backgrounds'>special catch card</a>","Options:<br>'locationbackground': Caught during certain in-person events</a><br>'specialbackground': Caught during certain global events<br>'background': Both location and special cards"],
     ["eggsonly", "<a href='https://bulbapedia.bulbagarden.net/wiki/Baby_Pokémon'>Baby</a> species", "Typically only found in eggs"],
     ["{keyword}","{keyword}", "Options: legendary, mythical, ultrabeast, 'ultra beasts', shadow, purified, shiny, lucky, dynamax, gigantamax."],
-    ["defender","currently defending a gym"],
+    ["defender","currently defending a gym","NOTE: This does not include Pokemon currently defending a Power Spot. There is no known search for those"],
     ["favorite","favorited","Marked with a star in storage."],
     ["candyxl", "powered up past level 40", "(Untested in a while) Includes best buddies boosted past 40."],
     ["party", "caught while in a Party", "Only extends back to Nov 1 2023<br>Includes any type of encounter."],
