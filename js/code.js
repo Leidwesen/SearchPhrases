@@ -46,7 +46,7 @@ const phraseData = [
     ["favorite","favorited","Marked with a star in storage.<br>NOTE: 'favourite' also works in english."],
     ["candyxl", "powered up past level 40", "NOTE: Does not include best buddies boosted past 40."],
     ["party", "caught while in a Party", "Only extends back to Nov 1 2023<br>Includes any type of encounter."],
-    ["hypertraining","currently being <a href='https://pokemongo.fandom.com/wiki/Hyper_Traininghttps://pokemongo.fandom.com/wiki/Hyper_Training'>Hyper Trained</a>", "NOTE: Does not include Pokemon which have finished their Hyper Training."],
+    ["hypertraining","currently being <a href='https://pokemongo.fandom.com/wiki/Hyper_Training'>Hyper Trained</a>", "NOTE: Does not include Pokemon which have finished their Hyper Training."],
     ["'maxmove1-'","Max-battle eligible","Finds everything useable in Max Battles.<br>Includes Dynamax, Gigantamax, and  Crowned Zacian and Zamazenta."],
     ["","<a href='https://bulbapedia.bulbagarden.net/wiki/Shadow_Pok%C3%A9mon_(GO)#Apex_Shadow_Pok%C3%A9mon'>Apex</a>","'249-250&shadow,purified&research'<br>Finds the Apex forms of Lugia and Ho-Oh.",],
     ["pokemon - encounter type","Pokemon obtained from...","various ways to obtain pokemon",,true],
