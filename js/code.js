@@ -68,7 +68,7 @@ const phraseData = [
     ["tradeevolve","have a trade evolution","<a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Trade_evolution'>Pokemon</a> which are free to evolve if recieved from a trade.<br>NOTE: Does not include pre-evolutions of tradeevolve species.<br><a href='https://i.imgur.com/i0iJkvW.png'>BUG</a>: Does not return traded pokemon."],
     ["evolvequest","have an evolution task","Pokemon which have buddy <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quest</a> evolution requirements."],
     ["fusion","have a fusion form","Pokemon that can <a href='https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_fusion#Pok%C3%A9mon_that_can_fuse_via_form_change'>fuse</a> (Necrozma, Kyurem).<br>Includes already fused forms, does not include the secondary fusion species.<br>Likely to include Calyrex eventually."],
-    // TODO: Test how searh functions when not having enough energy to fuse.
+    // TODO: Test how search functions when not having enough energy to fuse.
     ["pokemon - moves",,"phrases related to moves, using @",,true],
     ["@{type}","Moves with type {type}","Takes priority over {move}.","'@fairy'"],
     ["@{move}","Moves with name {move}", "Autocomplete. Moves with spaces use spaces.<br> To find the move \"psychic\", use '@psychi' or '@psychi&!@psychic fangs'.<br><a href='https://i.imgur.com/Wc88S9L.png'>BUG</a>: With 'Show Evolutionary Line' enabled, @{move} is overridden to +{move}, which searches for pokemon name.", "'@crunch', '@hydro pump'"],
@@ -96,7 +96,7 @@ const phraseData = [
     ["shortcut phrases",,"information about shortcut searches and their issues",,true],
     [,,"Shortcut searches function as a regular search, but internally are a range. This leads to differing behavior compared to regular searches:<br>• '{search}{text}' turning into '{search}'<br>• '@{search}' turning into '{search}'",],
     [,,"Current Shortcuts:<br>'Mega' for 'Mega0-'<br>'Count' for 'Count2-'<br>'Dynamax' for 'Dynamax1-'<br>'Gigantamax' for 'Gigantamax1-'"],
-    [,,"This presents difficulties searching for 'Meganium', '@Dynamax Cannon', or for tags starting with a shortcut phrase (when not using #)."],
+    [,,"This presents difficulties searching for 'Meganium', '@Mega Horn', '@Counter', '@Dynamax Cannon', or for tags starting with a shortcut phrase (when not using #)."],
     [,,"The <a href='redd.it/1plh8wg'>addition</a> of the Mega shortcut breaks the ability to use 'Mega' to find an active mega evolution."],
     ["miscellany",,"additional information and minutiae",,true],
     ["",,"The clickable search phrases are all &-combined together.", ""],
