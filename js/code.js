@@ -62,7 +62,7 @@ const phraseData = [
     ["traded", "trades", "Will also show up under original encounter type search."],
     ["", "the wild", "'&!raid&!hatched&!research&!gbl&!rocket&!snapshot&!traded&'"],
     ["pokemon - evolution","Pokemon which...","phrases related to evolution",,true],
-    ["evolve", "you can currently evolve", "Checks candy, item, and gender requirements.<br>Checks <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quests</a> for walking, ignores other quests."],
+    ["evolve", "you can currently evolve", "Checks candy, item, and gender requirements.<br>Checks <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quests</a> for walking, ignores other quests.<br><a href='redd.it/1rx5dym'>BUG</a>: Includes Gigantamax spcies which cannot evolve (Meowth, potentially Pikachu/Eevee)."],
     ["evolvenew", "you've never had the evolution of", "Only considers direct evolutions with an unregistered entry in the main & mega pokedex.<br><a href='https://i.imgur.com/aJPDH6A.png'>BUG</a>: Includes pokemon with restrictions making their evolution impossible."],
     ["megaevolve", "can currently mega evolve", "Considers energy for each pokemon.<br> Does not include currently active mega evolution."],
     ["item", "need an <a href='https://pokemongo.fandom.com/wiki/Evolution_Items'>item</a> to evolve","BUG: Only returns pokemon which have enough candy/item to evolve."],
