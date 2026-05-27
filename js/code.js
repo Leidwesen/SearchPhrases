@@ -65,7 +65,7 @@ const phraseData = [
     ["evolve", "you can currently evolve", "Checks candy, item, and gender requirements.<br>Checks <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quests</a> for walking, ignores other quests.<br><a href='redd.it/1rx5dym'>BUG</a>: Includes Gigantamax spcies which cannot evolve (Meowth, Pikachu, potentially Eevee)."],
     ["evolvenew", "you've never had the evolution of", "Only considers direct evolutions with an unregistered entry in the main & mega pokedex.<br><a href='https://i.imgur.com/aJPDH6A.png'>BUG</a>: Includes pokemon with restrictions making their evolution impossible."],
     ["megaevolve", "can currently mega evolve", "Considers energy for each pokemon.<br> Does not include currently active mega evolution."],
-    ["item", "need an <a href='https://pokemongo.fandom.com/wiki/Evolution_Items'>item</a> to evolve","BUG: Only returns pokemon which have enough candy/item to evolve."],
+    ["item", "need an <a href='https://pokemongo.fandom.com/wiki/Evolution_Items'>item</a> to evolve","BUG (untested in recent versions): Only returns pokemon which have enough candy/item to evolve."],
     ["tradeevolve","have a trade evolution","<a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Trade_evolution'>Pokemon</a> which are free to evolve if recieved from a trade.<br>NOTE: Does not include pre-evolutions of tradeevolve species.<br><a href='https://i.imgur.com/i0iJkvW.png'>BUG</a>: Does not return traded pokemon."],
     ["evolvequest","have an evolution task","Pokemon which have buddy <a href='https://pokemongo.fandom.com/wiki/Evolution?so=search#Buddy'>quest</a> evolution requirements."],
     ["fusion","have a fusion form","Pokemon that can <a href='https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_fusion#Pok%C3%A9mon_that_can_fuse_via_form_change'>fuse</a> (Necrozma, Kyurem).<br>Includes already fused forms, does not include the secondary fusion species.<br>Likely to include Calyrex eventually."],
@@ -114,6 +114,7 @@ const friendData = [
     ["giftable", "Friends you can currently send a gift to", "Gift opening day is based on opener's local time."],
     ["lucky", "Lucky friends"],
     ["friendlevel{N}", "Friends with friendship level {N}", "Range. 0 = no interaction<br>1/2/3/4/5 = good/great/ultra/best/forever friends.", "'friendlevel4', 'friendlevel2-3'"],
+    ["remotetrade","Friends with whom you have a currently available remote trade"],
     ["logical operations",,"Same as storage search",,true],
 ];
 
